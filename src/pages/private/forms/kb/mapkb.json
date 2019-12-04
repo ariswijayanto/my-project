@@ -1,0 +1,47 @@
+{
+    "0101": {
+        "beauty": "jumlah_anak",
+        "normalize": "Jawaban_H1"
+    },
+    "0102": {
+        "beauty": "kelahiran",
+        "normalize": "Jawaban_H1",
+        "answer": [
+            {
+                "index": 0,
+                "beauty": "lahir_hidup_laki_laki",
+                "normalize": "Jawaban_D1"
+            },
+            {
+                "index": 0,
+                "beauty": "lahir_hidup_perempuan",
+                "normalize": "Jawaban_D2"
+            },
+            {
+                "index": 1,
+                "beauty": "masih_hidup_laki_laki",
+                "normalize": "Jawaban_D1"
+            },
+            {
+                "index": 1,
+                "beauty": "masih_hidup_perempuan",
+                "normalize": "Jawaban_D2"
+            }
+        ]
+    },
+    "0103": {
+        "answer": [
+            {
+                "index": 0,
+                "normalize": "No_Jawaban",
+                "beauty": "sedang_hamil"
+            },
+            {
+                "index": 0,
+                "normalize": "Jawaban_D1",
+                "beauty": "usia_kehamilan"
+            },
+            {}
+        ]
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "short_name": "BKKBN",
+  "name": "BKKBN",
+  "icons": [
+    {
+      "src": "bkkbn1.jpeg",
+      "sizes": "128x49",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "bkkbn1.jpeg",
+      "type": "image/jpeg",
+      "sizes": "128x49"
+    },
+    {
+      "src": "bkkbn1.jpeg",
+      "type": "image/jpeg",
+      "sizes": "128x49"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
