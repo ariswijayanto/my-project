@@ -81,7 +81,9 @@ export default function DataSyncProvider(props) {
                 dataBkkbn.remote.replicate.from(dataBkkbn.local, {
                     filter: 'app/by_user_name',
                     query_params: { "user_name": metadata.name }
-                })
+                }).on('error', (err) => {
+                    console.log("Come Error in 3" + err);
+                });
             }
         });
 
