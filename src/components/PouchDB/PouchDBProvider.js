@@ -13,6 +13,11 @@ import { useSnackbar } from 'notistack';
 PouchDB.plugin(PouchDBFind);
 PouchDB.plugin(PouchDBAuth);
 
+// db 05Des2019
+const dataBkkbn = {
+    local: new PouchDB(local.data_bkkbn),
+    remote: new PouchDB(remote.data_bkkbn)
+}
 
 // db 
 const dataPK = {
@@ -36,6 +41,13 @@ const dataFrontend = new PouchDB('frontend');
 
 const PouchDBContext = React.createContext();
 
+//create indexes 05Des2019
+dataBkkbn.local.createIndex({
+    index: {
+        fields: ['No_KK']
+    }
+});
+
 // //create indexes
 dataKK.local.createIndex({
     index: {
@@ -57,6 +69,13 @@ dataPK.local.createIndex({
 // create filter
 (async () => {
     try {
+        await dataBkkbn.local.put({
+            "_id": "_design/app",
+            "filters": {
+                "by_user_name": "function(doc, req) {return doc.user_name === req.query.user_name;}"
+            }
+        })
+
         await dataKK.local.put({
             "_id": "_design/app",
             "filters": {
@@ -206,6 +225,7 @@ function PouchDBProvider(props) {
         dataKK,
         dataPK,
         dataKB,
+        dataBkkbn,
         PouchDB
     }}>
         {props.children}

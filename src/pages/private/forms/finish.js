@@ -23,7 +23,7 @@ function Finish({ wilayah, keluarga, normalizePK,
     normalizeKB, resetForm, mode, no_kk }) {
     const classes = useStyles();
     const { enqueueSnackbar } = useSnackbar();
-    const { user: { metadata }, dataKK, dataPK, dataKB } = usePouchDB();
+    const { user: { metadata }, dataKK, dataPK, dataKB, dataBkkbn } = usePouchDB();
     const [expanded, setExpanded] = useState('panel1a');
     const [isSubmitting, setSubmitting] = useState({
         local: false,
@@ -39,7 +39,6 @@ function Finish({ wilayah, keluarga, normalizePK,
 
 
     const saveTo = target => async (e) => {
-
         // put data utama to KK
         const dataKKUtama = {
             _id: wilayah.no_kk,
@@ -73,24 +72,20 @@ function Finish({ wilayah, keluarga, normalizePK,
         //simpan ke db local
         setSubmitting(curr => ({ ...curr, [target]: true }));
         try {
-            const dataKKAll = {
+            const data_kb = Object.values(normalizeKB);
+            const data_pk = Object.values(normalizePK);
+
+            //05Des2019
+            const dataBkkbnAll = {
                 ...dataKKUtama,
                 periode_sensus: 2020,
                 status_sensus: "",
-                data_nik
+                data_nik, data_kb, data_pk
             }
 
-            const dataKBAll = Object.values(normalizeKB);
-            const dataPKAll = Object.values(normalizePK);
+            await dataBkkbn[target].put(dataBkkbnAll);
 
-            await dataKK[target].put(dataKKAll);
-            if (dataKBAll.length > 0) {
-                await dataKB[target].bulkDocs(dataKBAll);
-            }
-
-            if (dataPKAll.length > 0) {
-                await dataPK[target].bulkDocs(dataPKAll);
-            }
+            console.log('DATA dataBkkbnAll' + dataBkkbnAll);
 
             let message = mode === 'edit' ? `Data berhasil diperbarui` : `Data berhasil disimpan ke ${target} DB`
             enqueueSnackbar(message, { variant: "success" })
