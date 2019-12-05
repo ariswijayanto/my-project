@@ -42,7 +42,7 @@ import { useSnackbar } from 'notistack';
 function Home({ history, match, location }) {
 
     const classes = useStyles();
-    const { user: { metadata }, dataKK, dataKB, dataPK } = usePouchDB();
+    const { user: { metadata }, dataKK, dataKB, dataPK, dataBkkbn } = usePouchDB();
     const [dataKKDocs, setDataKKDocs] = useState([]);
     const [isFetching, setFetching] = useState(true);
     const [isDeleting, setDeleting] = useState(false);

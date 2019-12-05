@@ -36,6 +36,7 @@ export default function DataSyncProvider(props) {
             filter: 'app/by_user_name',
             query_params: { "user_name": metadata.name }
         }).on('complete', () => {
+            console.log("Syncing local to remote... ");
             syncBkkbn = dataBkkbn.local.sync(dataBkkbn.remote, {
                 live: true,
                 retry: true,
@@ -67,10 +68,22 @@ export default function DataSyncProvider(props) {
                     setSyncing(isSyncing => ({ ...isSyncing, syncBkkbn: false, infoBkkbn: info }));
             }).on('error', (err) => {
                 // handle error
-                if (!didCancel)
+                console.log("Come Error in 1" + err);
+
+                if (!didCancel) 
                     setSyncing(isSyncing => ({ ...isSyncing, syncBkkbn: false, errorBkkbn: err }));
             });
-        })
+        }).on('error', (err) => {
+            console.log("Come Error in 2" + err);
+
+            if(err.status===404) {
+                console.log("Come Error in 2 is 404 next action replicate!!");
+                dataBkkbn.remote.replicate.from(dataBkkbn.local, {
+                    filter: 'app/by_user_name',
+                    query_params: { "user_name": metadata.name }
+                })
+            }
+        });
 
         return () => {
             didCancel = true;
