@@ -165,7 +165,7 @@ export default function Private({ history, match, location }) {
                     </Hidden>
 
                     <div className={classes.space}></div>
-                    {isSyncing.syncKK || isSyncing.syncKB || isSyncing.syncPK ? <Tooltip title="Syncing..." aria-label="syncing"><CircularProgress size={24} /></Tooltip > : <Detector
+                    {isSyncing.syncBkkbn ? <Tooltip title="Syncing..." aria-label="syncing"><CircularProgress size={24} /></Tooltip > : <Detector
                         render={({ online }) => {
                             return online ? <Connected className={classes.iconColor} /> : <Disconnected className={classes.iconColor} />;
                         }}
