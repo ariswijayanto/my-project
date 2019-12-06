@@ -72,6 +72,25 @@ function Finish({ wilayah, keluarga, normalizePK,
         //simpan ke db local
         setSubmitting(curr => ({ ...curr, [target]: true }));
         try {
+            const dataKKAll = {
+                ...dataKKUtama,
+                periode_sensus: 2020,
+                status_sensus: "",
+                data_nik
+            }
+
+            const dataKBAll = Object.values(normalizeKB);
+            const dataPKAll = Object.values(normalizePK);
+
+            await dataKK[target].put(dataKKAll);
+            if (dataKBAll.length > 0) {
+                await dataKB[target].bulkDocs(dataKBAll);
+            }
+
+            if (dataPKAll.length > 0) {
+                await dataPK[target].bulkDocs(dataPKAll);
+            }
+
             const data_kb = Object.values(normalizeKB);
             const data_pk = Object.values(normalizePK);
 
@@ -84,8 +103,6 @@ function Finish({ wilayah, keluarga, normalizePK,
             }
 
             await dataBkkbn[target].put(dataBkkbnAll);
-
-            console.log('DATA dataBkkbnAll' + dataBkkbnAll);
 
             let message = mode === 'edit' ? `Data berhasil diperbarui` : `Data berhasil disimpan ke ${target} DB`
             enqueueSnackbar(message, { variant: "success" })
