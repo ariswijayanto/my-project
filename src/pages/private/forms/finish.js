@@ -95,6 +95,7 @@ function Finish({ wilayah, keluarga, normalizePK,
             const data_pk = Object.values(normalizePK);
 
             //05Des2019
+            
             const dataBkkbnAll = {
                 ...dataKKUtama,
                 periode_sensus: 2020,

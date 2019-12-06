@@ -32,11 +32,11 @@ export default function DataSyncProvider(props) {
         let count = 0;
         let messages = [];
 
-        dataBkkbn.remote.replicate.from(dataBkkbn.local, {
+        dataBkkbn.local.replicate.from(dataBkkbn.remote, {
             filter: 'app/by_user_name',
             query_params: { "user_name": metadata.name }
         }).on('complete', () => {
-            console.log("Replicating remote to local is complete");
+            console.log("Replicating local to remote is complete");
             console.log("Syncing local to remote on... ");
             syncBkkbn = dataBkkbn.local.sync(dataBkkbn.remote, {
                 live: true,
@@ -79,12 +79,12 @@ export default function DataSyncProvider(props) {
 
             if(err.status===404) {
                 console.log("Come Error in 2 is 404 next action replicate!!");
-                dataBkkbn.local.replicate.from(dataBkkbn.remote, {
-                    filter: 'app/by_user_name',
-                    query_params: { "user_name": metadata.name }
-                }).on('error', (err) => {
-                    console.log("Come Error in 3 .. " + err);
-                });
+                // dataBkkbn.local.replicate.from(dataBkkbn.remote, {
+                //     filter: 'app/by_user_name',
+                //     query_params: { "user_name": metadata.name }
+                // }).on('error', (err) => {
+                //     console.log("Come Error in 3 .. " + err);
+                // });
             }
         });
 
