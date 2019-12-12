@@ -14,7 +14,6 @@ export const remote = {
     cloudant_url: `${remotebase}`
 }
 
-
 export const local = {
     data_kk: 'data_kk',
     data_kb: 'data_kb',
