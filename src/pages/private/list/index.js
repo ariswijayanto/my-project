@@ -43,7 +43,7 @@ function Home({ history, match, location }) {
 
     const classes = useStyles();
     const { user: { metadata }, dataKK, dataKB, dataPK, dataBkkbn } = usePouchDB();
-    const [dataKKDocs, setDataKKDocs] = useState([]);
+    const [dataBkkbnDocs, setDataBkkbnDocs] = useState([]);
     const [isFetching, setFetching] = useState(true);
     const [isDeleting, setDeleting] = useState(false);
     const [kepalaKels, setKepalaKels] = useState([])
@@ -51,10 +51,10 @@ function Home({ history, match, location }) {
 
     useEffect(() => {
         let didCancel = false;
-        const getAllDataKK = async () => {
+        const getAllDataBkkbn = async () => {
             setFetching(true)
             try {
-                const query = await dataKK.local.find({
+                const query = await dataBkkbn.local.find({
                     selector: {
                         user_name: { $eq: metadata.name }
                     }
@@ -62,7 +62,7 @@ function Home({ history, match, location }) {
 
 
                 if (!didCancel) {
-                    setDataKKDocs(query.docs)
+                    setDataBkkbnDocs(query.docs)
                 }
             }
             catch (e) {
@@ -73,7 +73,7 @@ function Home({ history, match, location }) {
             }
         }
 
-        getAllDataKK();
+        getAllDataBkkbn();
 
         return () => {
             didCancel = true;
@@ -84,7 +84,7 @@ function Home({ history, match, location }) {
     useEffect(() => {
 
         const queryParams = qs.parse(location.search)
-        let kepalas = dataKKDocs.filter(kkDoc => typeof kkDoc.data_nik !== 'undefined').map(kkDoc => {
+        let kepalas = dataBkkbnDocs.filter(kkDoc => typeof kkDoc.data_nik !== 'undefined').map(kkDoc => {
             let findKepala = kkDoc.data_nik.find(data_nik => data_nik.sts_hubungan);
             if (!findKepala) {
                 findKepala = kkDoc.data_nik[0]
@@ -103,7 +103,7 @@ function Home({ history, match, location }) {
 
         setKepalaKels(kepalas);
 
-    }, [dataKKDocs, location.search])
+    }, [dataBkkbnDocs, location.search])
 
 
 
@@ -114,56 +114,36 @@ function Home({ history, match, location }) {
         setDeleting(true)
         try {
             //remove from local
-            const kkDoc = await dataKK.local.get(no_kk);
-            await dataKK.local.put({ ...kkDoc, _deleted: true });
+            const kkDoc = await dataBkkbn.local.get(no_kk);
+            await dataBkkbn.local.put({ ...kkDoc, _deleted: true });
 
-            const kbQuery = await dataKB.local.find({
+            const kbQuery = await dataBkkbn.local.find({
                 selector: {
                     No_KK: { $eq: no_kk }
                 }
             })
             if (kbQuery.docs.length > 0)
-                await dataKB.local.bulkDocs(kbQuery.docs.map(doc => ({ ...doc, _deleted: true })))
+                await dataBkkbn.local.bulkDocs(kbQuery.docs.map(doc => ({ ...doc, _deleted: true })))
 
 
-            const pkQuery = await dataPK.local.find({
+            const pkQuery = await dataBkkbn.local.find({
                 selector: {
                     No_KK: { $eq: no_kk }
                 }
             })
             if (pkQuery.docs.length > 0)
-                await dataPK.local.bulkDocs(pkQuery.docs.map(doc => ({ ...doc, _deleted: true })))
+                await dataBkkbn.local.bulkDocs(pkQuery.docs.map(doc => ({ ...doc, _deleted: true })))
 
 
-            // // remove data from remote
-            // const kkDocR = await dataKK.remote.get(no_kk);
-            // await dataKK.remote.put({ ...kkDocR, _deleted: true });
-
-            // const kbQueryR = await dataKB.remote.find({
-            //     selector: {
-            //         No_KK: { $eq: no_kk }
-            //     }
-            // })
-            // if (kbQueryR.docs.length > 0)
-            //     await dataKB.remote.bulkDocs(kbQueryR.docs.map(doc => ({ ...doc, _deleted: true })))
-
-
-            // const pkQueryR = await dataPK.remote.find({
-            //     selector: {
-            //         No_KK: { $eq: no_kk }
-            //     }
-            // })
-            // if (pkQueryR.docs.length > 0)
-            //     await dataPK.remote.bulkDocs(pkQueryR.docs.map(doc => ({ ...doc, _deleted: true })))
-
+           
 
             enqueueSnackbar("Data berhasil dihapus", { variant: "success" })
-            const query = await dataKK.local.find({
+            const query = await dataBkkbn.local.find({
                 selector: {
                     user_name: { $eq: metadata.name }
                 }
             });
-            setDataKKDocs(query.docs)
+            setDataBkkbnDocs(query.docs)
         } catch (e) {
 
             console.log(e);
@@ -232,4 +212,3 @@ function Home({ history, match, location }) {
 }
 
 export default Home;
-
