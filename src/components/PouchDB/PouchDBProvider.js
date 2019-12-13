@@ -234,3 +234,4 @@ function PouchDBProvider(props) {
 }
 
 export default PouchDBProvider;
+

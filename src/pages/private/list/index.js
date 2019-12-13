@@ -232,3 +232,4 @@ function Home({ history, match, location }) {
 }
 
 export default Home;
+
