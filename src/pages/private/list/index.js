@@ -135,7 +135,27 @@ function Home({ history, match, location }) {
                 await dataBkkbn.local.bulkDocs(pkQuery.docs.map(doc => ({ ...doc, _deleted: true })))
 
 
-           
+             // // remove data from remote
+            // const kkDocR = await dataKK.remote.get(no_kk);
+            // await dataKK.remote.put({ ...kkDocR, _deleted: true });
+
+            // const kbQueryR = await dataKB.remote.find({
+            //     selector: {
+            //         No_KK: { $eq: no_kk }
+            //     }
+            // })
+            // if (kbQueryR.docs.length > 0)
+            //     await dataKB.remote.bulkDocs(kbQueryR.docs.map(doc => ({ ...doc, _deleted: true })))
+
+
+            // const pkQueryR = await dataPK.remote.find({
+            //     selector: {
+            //         No_KK: { $eq: no_kk }
+            //     }
+            // })
+            // if (pkQueryR.docs.length > 0)
+            //     await dataPK.remote.bulkDocs(pkQueryR.docs.map(doc => ({ ...doc, _deleted: true })))
+            
 
             enqueueSnackbar("Data berhasil dihapus", { variant: "success" })
             const query = await dataBkkbn.local.find({
