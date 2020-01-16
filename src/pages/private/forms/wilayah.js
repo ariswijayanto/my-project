@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // material ui components
@@ -30,7 +30,13 @@ import { Swipeable } from 'react-swipeable';
 
 import isInt from 'validator/lib/isInt';
 
-function Wilayah({ wilayah, setWilayah, handleNext, mode }) {
+// redux implementation
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { setKeluarga } from "../../../actions/keluarga";
+import { compose } from "redux";
+
+function Wilayah({ wilayah, setWilayah, handleNext, mode, setKeluarga, keluarga, history }) {
     const classes = useStyles();
     const nextRef = useRef(null)
     const { user: { metadata } } = usePouchDB();
@@ -43,6 +49,11 @@ function Wilayah({ wilayah, setWilayah, handleNext, mode }) {
     const [isSomethingChange, setSomethingChange] = useState(false);
 
     const [isSubmitting, setSubmitting] = useState(false);
+
+    useEffect(() => {
+        if (Object.keys(keluarga.data).length > 0)
+        return history.push('/form')
+    });
 
 
     const handleChange = (e) => {
@@ -127,7 +138,7 @@ function Wilayah({ wilayah, setWilayah, handleNext, mode }) {
             //simpan ke db local
             setSubmitting(true);
             try {
-
+                setKeluarga('keluarga submit');
                 // const existing = await dataKK.local.get(wilayah.no_kk)
 
 
@@ -173,6 +184,7 @@ function Wilayah({ wilayah, setWilayah, handleNext, mode }) {
             trackMouse={true}
 
             onSwipedLeft={(e) => {
+                console.log('selanjutnya')
                 if (nextRef) {
 
                     nextRef.current.click();
@@ -184,7 +196,7 @@ function Wilayah({ wilayah, setWilayah, handleNext, mode }) {
                 <Grid container spacing={3}>
 
                     <Grid item xs={12} className={classes.textCenter}>
-                        <Typography variant="h5" component="h1">{mode === 'edit' ? `Edit Form Data Kependudukan` : 'Form Data Kependudukan'}</Typography>
+                        <Typography variant="h5" component="h1">{mode === 'edit' ? `Edit Form Data Kependudukan` : 'Form Data Kependudukan Mandiri'}</Typography>
                         {mode === 'edit' && <Typography>No KK: {wilayah.no_kk}</Typography>}
 
                     </Grid>
@@ -390,4 +402,10 @@ Wilayah.propTypes = {
     setWilayah: PropTypes.func.isRequired
 }
 
-export default Wilayah;
+export default compose(connect(
+   ({keluarga}) => ({
+       keluarga
+   }),
+   {setKeluarga}
+),withRouter)
+(Wilayah);

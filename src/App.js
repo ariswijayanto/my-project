@@ -22,35 +22,37 @@ import { SnackbarProvider } from "notistack";
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 import DateFnsUtils from '@date-io/date-fns';
+
 // the root component
+import { Provider } from "react-redux";
+import store from "./store";
+
 function App() {
 
   return (
     <>
-
-      <CssBaseline />
-      <ThemeProvider theme={theme}>
-        <SnackbarProvider maxSnack={3} autoHideDuration={3000}>
-          <PouchDBProvider>
+      <PouchDBProvider>
+        <CssBaseline />
+        <ThemeProvider theme={theme}>
+          <SnackbarProvider maxSnack={3} autoHideDuration={3000}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <Router>
-                <ScrollToTop />
-                <Switch>
-                  <PrivateRoute path="/" exact component={Private} />
-                  <PrivateRoute path="/form" component={Private} />
-                  <PrivateRoute path="/list" component={Private} />
-                  <PrivateRoute path="/definisi-operasional" component={Private} />
-                  <Route path="/login" component={Login} />
-                  <Route component={NotFound} />
-                </Switch>
-
-              </Router>
+              <Provider store={store}>
+                <Router>
+                  <ScrollToTop />
+                  <Switch>
+                    <PrivateRoute path="/" exact component={Private} />
+                    <PrivateRoute path="/form" component={Private} />
+                    <PrivateRoute path="/list" component={Private} />
+                    <PrivateRoute path="/definisi-operasional" component={Private} />
+                    <Route path="/login" component={Login} />
+                    <Route component={NotFound} />
+                  </Switch>
+                </Router>
+              </Provider>
             </MuiPickersUtilsProvider>
-
-          </PouchDBProvider>
-        </SnackbarProvider>
-
-      </ThemeProvider>
+          </SnackbarProvider>
+        </ThemeProvider>
+      </PouchDBProvider>
 
     </>
   );

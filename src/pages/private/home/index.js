@@ -34,7 +34,7 @@ import { useDataSync } from '../../../components/PouchDB/DataSyncProvider';
 function Home({ history }) {
 
     const classes = useStyles();
-    const { user, dataKK } = usePouchDB();
+    const { user, dataBkkbn } = usePouchDB();
     const { isSyncing } = useDataSync();
     const metadata = user.metadata;
     const [wilayahkerja, setWilayahKerja] = useState('');
@@ -79,7 +79,7 @@ function Home({ history }) {
         let didCancel = false;
         const getAllDataKK = async () => {
 
-            const query = await dataKK.local.find({
+            const query = await dataBkkbn.local.find({
                 selector: {
                     user_name: { $eq: metadata.name }
                 }
@@ -99,7 +99,7 @@ function Home({ history }) {
         return () => {
             didCancel = true
         }
-    }, [metadata, dataKK.local])
+    }, [metadata, dataBkkbn.local])
 
     return (
         <Container maxWidth="md" className={classes.container}>

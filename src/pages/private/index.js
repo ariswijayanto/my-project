@@ -4,8 +4,10 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -16,10 +18,12 @@ import Badge from '@material-ui/core/Badge';
 import Popover from '@material-ui/core/Popover';
 import CircularProgress from '@material-ui/core/CircularProgress';
 // material ui icons
+
 import SignOutIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
 import UserIcon from '@material-ui/icons/Person';
 import PeopleIcon from '@material-ui/icons/People';
+import MenuIcon from '@material-ui/icons/Menu';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchIcon from '@material-ui/icons/Search';
@@ -35,7 +39,7 @@ import Home from './home';
 import List from './list';
 import Form from './forms/index';
 import EditForm from './forms/edit';
-import DefOP from './definisi-op/index';
+import DefOP from './definisi-op/index'
 import { usePouchDB } from '../../components/PouchDB/PouchDBProvider';
 import { useDataSync } from '../../components/PouchDB/DataSyncProvider';
 import Copyright from '../../components/Copyright';
@@ -73,8 +77,7 @@ export default function Private({ history, match, location }) {
         setAnchorEl(null);
     };
 
-    const handleSignOut = async (ev) => {
-
+    const handleSignOut = async (e) => {
         try {
             await logoutAndClearLocal()
         } catch (e) {

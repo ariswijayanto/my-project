@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import useStyles from './styles';
 
 // react router dom
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 // pouchdb hook
 import { usePouchDB } from '../../components/PouchDB/PouchDBProvider';
@@ -21,12 +21,12 @@ import { usePouchDB } from '../../components/PouchDB/PouchDBProvider';
 import AppLoading from '../../components/AppLoading';
 
 import logo from '../../images/logo.png';
-import { useSnackbar } from 'notistack';
+// import { useSnackbar } from 'notistack';
 
 function Login(props) {
     const { location } = props;
     const classes = useStyles();
-    const { enqueueSnackbar } = useSnackbar();
+    // const { enqueueSnackbar } = useSnackbar();
     const [form, setForm] = useState({
         username: '',
         password: ''
@@ -101,10 +101,10 @@ function Login(props) {
                     newError.password = "User atau Password salah"
                 } else if (e.name === 'not_found') {
                     newError.password = "User tidak ditemukan"
-                } else if (e.name === 'unknown') {
-                    enqueueSnackbar('Anda sedang offline, login hanya bisa dilakukan saat anda online', { variant: 'error' })
-                } else {
-                    enqueueSnackbar('Terjadi kesalahan silahkan coba lagi', { variant: 'error' })
+                // } else if (e.name === 'unknown') {
+                //     enqueueSnackbar('Anda sedang offline, login hanya bisa dilakukan saat anda online', { variant: 'error' })
+                // } else {
+                //     enqueueSnackbar('Terjadi kesalahan silahkan coba lagi', { variant: 'error' })
                 }
 
                 setError(newError);

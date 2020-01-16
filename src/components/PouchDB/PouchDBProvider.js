@@ -4,7 +4,7 @@ import PouchDB from 'pouchdb-browser';
 import PouchDBFind from 'pouchdb-find';
 import PouchDBAuth from 'pouchdb-authentication';
 import { remote, local } from '../../config/db';
-import { useSnackbar } from 'notistack';
+// import { useSnackbar } from 'notistack';
 
 
 //localforage
@@ -118,7 +118,7 @@ function PouchDBProvider(props) {
         loading: true
     })
     const [auth, setAuth] = useState({})
-    const { enqueueSnackbar } = useSnackbar();
+    // const { enqueueSnackbar } = useSnackbar();
 
     //console.log(user)
     // auth
@@ -208,10 +208,10 @@ function PouchDBProvider(props) {
             console.log(JSON.stringify(e))
             if (e.name === 'not_found') {
                 setUser(user => ({ ...user, isLoggedIn: false }))
-            } else if (e.name === 'unknown') {
-                enqueueSnackbar('Anda sedang offline, logout hanya bisa dilakukan saat anda online', { variant: 'error' })
-            } else {
-                enqueueSnackbar('Terjadi kesalahan silahkan coba lagi', { variant: 'error' })
+            // } else if (e.name === 'unknown') {
+            //     enqueueSnackbar('Anda sedang offline, logout hanya bisa dilakukan saat anda online', { variant: 'error' })
+            // } else {
+            //     enqueueSnackbar('Terjadi kesalahan silahkan coba lagi', { variant: 'error' })
             }
         }
     }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -24,6 +24,7 @@ function Finish({ wilayah, keluarga, normalizePK,
     const classes = useStyles();
     const { enqueueSnackbar } = useSnackbar();
     const { user: { metadata }, dataKK, dataPK, dataKB, dataBkkbn } = usePouchDB();
+    const [locationUser, setLocationUser] = useState([]);
     const [expanded, setExpanded] = useState('panel1a');
     const [isSubmitting, setSubmitting] = useState({
         local: false,
@@ -36,6 +37,18 @@ function Finish({ wilayah, keluarga, normalizePK,
     const handleChange = panel => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
+    const getLocationUser = () => {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            setLocationUser([{
+                'latitude': position.coords.latitude
+            }, {
+                'longitude': position.coords.longitude
+            }]);
+        });
+    }
+    useEffect(() => {
+        getLocationUser()
+    })
 
 
     const saveTo = target => async (e) => {
@@ -51,8 +64,8 @@ function Finish({ wilayah, keluarga, normalizePK,
             ...wilayah,
             id_rw: parseInt(wilayah.id_rw),
             id_rt: parseInt(wilayah.id_rt),
+            location: { locationUser }
         };
-
         const data_nik = Object.keys(keluarga).map(_id => {
 
             return {
@@ -76,7 +89,7 @@ function Finish({ wilayah, keluarga, normalizePK,
                 ...dataKKUtama,
                 periode_sensus: 2020,
                 status_sensus: "",
-                data_nik
+                data_nik,
             }
 
             const dataKBAll = Object.values(normalizeKB);
@@ -95,12 +108,13 @@ function Finish({ wilayah, keluarga, normalizePK,
             const data_pk = Object.values(normalizePK);
 
             //05Des2019
-            
+
             const dataBkkbnAll = {
                 ...dataKKUtama,
                 periode_sensus: 2020,
                 status_sensus: "",
-                data_nik, data_kb, data_pk
+                data_nik, data_kb, data_pk,
+
             }
 
             await dataBkkbn[target].put(dataBkkbnAll);
