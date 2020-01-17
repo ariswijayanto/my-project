@@ -1,0 +1,36 @@
+id,pertanyaan,tipe,options,dependencies,unit,lain
+00201,"Keluarga mampu membeli 1 (satu) stel pakaian baru untuk setiap anggota keluarga minimal setahun sekali","radio","Ya|Tidak"
+00202,"Keluarga mampu memenuhi kebutuhan makan setiap anggota keluarga minimal 2 kali sehari","radio","Ya|Tidak"
+00203,"Seluruh anggota keluarga bila sakit berobat ke fasilitas kesehatan","radio","Ya|Tidak"
+00204,"Seluruh anggota keluarga memiliki pakaian yang berbeda untuk dirumah, bekerja/sekolah dan bepergian","radio","Ya|Tidak"
+00205,"Setiap anggota keluarga makan makanan beragam (sayur. Lauk dan buah) setiap hari","radio","Ya|Tidak"
+00206,"Setiap anggota keluarga (usia 10 tahun keatas) menjalankan ibadah sesuai ketentuan agama atau kepercayaan  yang dianut","radio","Ya|Tidak"
+00207,"keluarga memiliki simpanan yang bisa digunakan sewaktu-waktu untuk memenuhi kebutuhan pokok dalam kehidupan sebulan kedepan","radio","Ya|Tidak"
+00208,"Setiap anggota keluarga memiliki waktu untuk berinteraksi setiap hari","radio","Ya|Tidak"
+00209,"Terdapat anggota keluarga yang ikut serta dalam kegiatan sosial yang diselenggarakan oleh pemerintah dan/ atau swadaya masyarakat","radio","Ya|Tidak"
+00210,"Keluarga Memiliki Akses informasi dari media cetak (Koran, Majalah, dll) atau  media elektronik (Tv, radio) atau Media online (internet)	" ,"radio","Ya|Tidak"
+00211,"Keluarga memiliki anggota yang menjadi pengurus kegiatan sosial"	,"radio","Ya|Tidak"
+00212,"Anggota keluarga tidak ada yang merokok","radio","Ya|Tidak"
+00213,"Pengasuhan anak dilakukan bersama oleh suami dan istri","radio","Ya|Tidak|Tidak Berlaku","haveChildren"
+00214,"Keputusan penggunaan penghasilan suami/istri dilakukan bersama oleh suami dan istri","radio","Ya|Tidak|Tidak Berlaku","haveWifeOrHusband"
+00215,"Hubungan dalam keluarga tidak mengalami keretakan","radio","Ya|Tidak"
+00216,"Keluarga mempunyai balita ikut kegiatan Posyandu","radio","Ya|Tidak|Tidak Berlaku","haveChildren|haveChildrenUnder5"
+00217,"Keluarga mempunyai balita ikut kegiatan BKB","radio","Ya|Tidak|Tidak Berlaku","haveChildren|haveChildrenUnder5"
+00218,"Keluarga mempunyai remaja ikut kegiatan BKR","radio","Ya|Tidak|Tidak Berlaku","haveChildren|haveChildrenFrom10To24"
+00219,"Ada anggota keluarga masih remaja ikut PIK-R / M","radio","Ya|Tidak|Tidak Berlaku","haveChildren|haveChildrenFrom10To24"
+00220,"Keluarga lansia atau mempunyai lansia ikut kegiatan BKL","radio","Ya|Tidak|Tidak Berlaku","haveFamilyMember60"
+00221,"Keluarga mengikuti kegiatan UPPKS","radio","Ya|Tidak"
+00222,"Setiap anggota keluarga tidak ada yang sakit sehingga meninggalkan aktifitas dalam 1 (satu) bulan terakhir.","radio","Ya|Tidak"
+00223,"Keluarga memiliki buku/akta nikah yang disahkan oleh pejabat yang berwenang.","radio","Ya|Tidak|Tidak Berlaku","haveMarriedMember"
+00224,"Setiap anak (usia 0-17 tahun ) dalam keluarga memiliki akta lahir yang disahkan oleh pejabat yang berwenang.","haveChildren|haveChildrenFrom0To17"
+00225,"Apakah jenis atap rumah terluas","radio","Daun / rumbia|Seng / asbes|Genteng / sirap|Lainnya",,,true
+00226,"Apakah jenis dinding rumah terluas","radio","Bambu|Kayu / seng|Tembok|Lainnya",,,true
+00227,"Apakah jenis lantai rumah terluas","radio","Tanah|Semen / papan|Ubin / keramik / marmer|Lainnya",,,true
+00228,"Apakah sumber penerangan utama",	"radio","Lampu minyak Listrik, daya 450 watt|Genset / diesel Listrik, daya 900 watt bersubsidi|Listrik, daya 900 watt non bersubsidi|Listrik, daya diatas  900 watt|Genset / diesel|Lampu minyak|Lainnya",,,true
+00229,"Apakah sumber air minum","radio","Air kemasan/ air isi Ulang|Ledeng|Sumur Terlindung / Pompa|Air hujan / air sungai|Lainnya",,,true
+00230,"Apakah bahan bakar utama untuk memasak","radio","Listrik / Gas|Minyak tanah|Arang / kayu|Lainnya",,,true
+00231,"Apakah Memiliki fasilitas tempat buang air besar","radio","Ya, dengan Septic Tank|Ya, Tanpa Septic tank|Jamban Umum/ bersama|Lainnya",,,true
+00232,"Apakah Keluarga memiliki pengelolaan sampah","radio","Sendiri|Tidak Punya|Umum / bersama|Lainnya",,,true
+00233,"Status kepemilikan rumah / bangunan tempat tinggal","radio","Milik sendiri|Sewa / kontrak|Menumpang|Lainnya",,,true
+00234,"Berapa luas rumah/bangunan keseluruhan (m2)","number",,,"m2"
+00235,"Berapa orang yang tinggal dan menetap di rumah/ bangunan ini","number",,,"Orang"

@@ -1,0 +1,471 @@
+{
+    "0201": {
+        "no": "01",
+        "pertanyaan": "Setiap anggota keluarga (usia 10 tahun ke atas) menjalankan ibadah sesuai dengan tuntunan agama atau kepercayaan yang dianut",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": false
+    },
+    "0202": {
+        "no": "02",
+        "pertanyaan": "Keluarga memiliki buku/akta nikah yang disahkan oleh pejabat yang berwenang",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak",
+            "Tidak Berlaku"
+        ],
+        "dependencies": [
+            "haveMarriedMember"
+        ],
+        "unit": "",
+        "lain": false
+    },
+    "0203": {
+        "no": "03",
+        "pertanyaan": "Terdapat konflik (tanpa tegur sapa, pisah ranjang antara suami dan istri, anggota keluarga pergi dari rumah/minggat, kekerasan dalam rumah tangga) antara anggota keluarga dalam 6 (enam) bulan terakhir",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": false
+    },
+    "0204": {
+        "no": "04",
+        "pertanyaan": "Setiap anggota keluarga makan \"makanan beragam\" (makanan pokok, sayur/buah dan lauk) paling sedikit 2 (dua) kali sehari",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": false
+    },
+    "0205": {
+        "no": "05",
+        "pertanyaan": "keluarga memiliki simpanan/tabungan yang dapat digunakan sewaktu-waktu untuk memenuhi kebutuhan pokok dalam kehidupan 3 (tiga) bulan kedepan",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": false
+    },
+    "0206": {
+        "no": "06",
+        "pertanyaan": "Terdapat anggota keluarga yang sakit sehingga meninggalkan aktifitas dalam 1 (satu) bulan terakhir",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": false
+    },
+    "0207": {
+        "no": "07",
+        "pertanyaan": "Keluarga memiliki akses informasi dari media cetak, media elektronik atau media online",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": false
+    },
+    "0208": {
+        "no": "08",
+        "pertanyaan": "Setiap anggota keluarga memiliki waktu untuk berinteraksi setiap hari",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": false
+    },
+    "0209": {
+        "no": "09",
+        "pertanyaan": "Pengasuhan anak dilakukan bersama oleh suami dan istri",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak",
+            "Tidak Berlaku"
+        ],
+        "dependencies": [
+            "haveChildren"
+        ],
+        "unit": "",
+        "lain": false
+    },
+    "0210": {
+        "no": "10",
+        "pertanyaan": "Setiap anggota keluarga berekreasi bersama di luar rumah minimal 6 (enam) bulan sekali",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": false
+    },
+    "0211": {
+        "no": "11",
+        "pertanyaan": "Keluarga ikut serta dalam kegiatan sosial dilingkunan RT dalam waktu 1 tahun terakhir",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": false
+    },
+    "0212": {
+        "no": "12",
+        "pertanyaan": "Keluarga memiliki tempat pembuangan sampah",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": false
+    },
+    "0213": {
+        "no": "13",
+        "pertanyaan": "Keluarga mempunyai balita (0-5 thn) ikut kegiatan Posyandu",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak",
+            "Tidak Berlaku"
+        ],
+        "dependencies": [
+            "haveChildrenUnder5"
+        ],
+        "unit": "",
+        "lain": false
+    },
+    "0214": {
+        "no": "14",
+        "pertanyaan": "Keluarga mempunyai balita dan anak (0-6 thn) ikut kegiatan Bina Keluarga Balita (BKB)",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak",
+            "Tidak Berlaku"
+        ],
+        "dependencies": [
+            "haveChildrenUnder6"
+        ],
+        "unit": "",
+        "lain": false
+    },
+    "0215": {
+        "no": "15",
+        "pertanyaan": "Keluarga mempunyai remaja (10-24 thn) ikut kegiatan Bina Keluarga Remaja (BKR)",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak",
+            "Tidak Berlaku"
+        ],
+        "dependencies": [
+            "haveChildrenFrom10To24"
+        ],
+        "unit": "",
+        "lain": false
+    },
+    "0216": {
+        "no": "16",
+        "pertanyaan": "Ada anggota keluarga masih remaja (10-24 thn) ikut Pusat Informasi dan Konsultasi Remaja / Mahasiswa (PIK-R/M)",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak",
+            "Tidak Berlaku"
+        ],
+        "dependencies": [
+            "haveChildrenFrom10To24"
+        ],
+        "unit": "",
+        "lain": false
+    },
+    "0217": {
+        "no": "17",
+        "pertanyaan": "Keluarga lansia atau mempunyai lansia (> 60 thn) ikut kegiatan Bina Keluarga Lansisa (BKL)",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak",
+            "Tidak Berlaku"
+        ],
+        "dependencies": [
+            "haveFamilyMember60"
+        ],
+        "unit": "",
+        "lain": false
+    },
+    "0218": {
+        "no": "18",
+        "pertanyaan": "Keluarga mengikuti kegiatan Usaha Peningkatan Pendapatan Keluarga Sejahtera (UPPKS)",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": false
+    },
+    "0219": {
+        "no": "19",
+        "pertanyaan": "Jenis atap rumah terluas?",
+        "tipe": "radio",
+        "options": [
+            "Daun/Rumbia",
+            "Seng/Asbes",
+            "Genteng/Sirap",
+            "Lainnya"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": true,
+        "kondisi": true
+    },
+    "0220": {
+        "no": "20",
+        "pertanyaan": "Jenis dinding rumah terluas?",
+        "tipe": "radio",
+        "options": [
+            "Bambu",
+            "Kayu/Seng",
+            "Tembok",
+            "Lainnya"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": true,
+        "kondisi": true
+    },
+    "0221": {
+        "no": "21",
+        "pertanyaan": "Jenis lantai rumah terluas?",
+        "tipe": "radio",
+        "options": [
+            "Keramik/Marmer/Granit",
+            "Ubin/Tegel/Teraso",
+            "Semen",
+            "Kayu/Papan",
+            "Bambu",
+            "Tanah",
+            "Lainnya"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": true,
+        "kondisi": true
+    },
+    "0222": {
+        "no": "22",
+        "pertanyaan": "Sumber penerangan utama?",
+        "tipe": "radio",
+        "options": [
+            "Listrik, daya 450 watt",
+            "Listrik, daya 900 watt bersubsidi",
+            "Listrik, daya 900 watt non bersubsidi",
+            "Listrik, daya diatas  900 watt",
+            "Lampu minyak",
+            "Lainnya"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": true
+    },
+    "0223": {
+        "no": "23",
+        "pertanyaan": "Sumber air minum utama?",
+        "tipe": "radio",
+        "options": [
+            "Air kemasan/Isi Ulang",
+            "Ledeng",
+            "Pompa/Sumur Pantek",
+            "Sumur",
+            "Mata Air",
+            "Sungai/Danau",
+            "Air Hujan",
+            "Lainnya"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": true
+    },
+    "0224": {
+        "no": "24",
+        "pertanyaan": "Bahan bakar utama untuk memasak?",
+        "tipe": "radio",
+        "options": [
+            "Listrik/Gas",
+            "Minyak Tanah",
+            "Arang/Kayu",
+            "Lainnya"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": true
+    },
+    "0225": {
+        "no": "25",
+        "pertanyaan": "Memiliki fasilitas tempat buang air besar?",
+        "tipe": "radio",
+        "options": [
+            "Ya, dengan Septic Tank",
+            "Ya, Tanpa Septic Tank",
+            "Tidak, Jamban Umum/Bersama",
+            "Lainnya"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": true
+    },
+    "0226": {
+        "no": "26",
+        "pertanyaan": "Kepemilikan rumah/bangunan tempat tinggal?",
+        "tipe": "radio",
+        "options": [
+            "Milik sendiri",
+            "Kontrak/Sewa",
+            "Bebas Sewa",
+            "Dinas",
+            "Lainnya"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": true
+    },
+    "0227": {
+        "no": "27",
+        "pertanyaan": "Luas rumah/bangunan keseluruhan (m2)?",
+        "tipe": "number",
+        "options": [],
+        "dependencies": [],
+        "unit": "m2",
+        "lain": false
+    },
+    "0228": {
+        "no": "28",
+        "pertanyaan": "Orang yang tinggal dan menetap di rumah/bangunan ini?",
+        "tipe": "number",
+        "options": [],
+        "dependencies": [],
+        "unit": "Orang",
+        "lain": false
+    },
+    "0229": {
+        "no": "29",
+        "pertanyaan": "Keluarga pernah memperoleh/mendengar/melihat pesan/informasi program kependudukan, Keluarga Berencana dan Pembangunan Keluarga dari media?",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": false
+    },
+    "0230": {
+        "no": "30",
+        "pertanyaan": "Jika ya, darimana info tersebut diperoleh (dipilih boleh lebih dari satu)?",
+        "tipe": "checkbox",
+        "options": [
+            "Radio",
+            "Televisi",
+            "Videotron",
+            "Koran",
+            "Majalah/Tabloid",
+            "Flipchart/Lembar Balik",
+            "Poster",
+            "Spanduk/Umbul-umbul",
+            "Banner",
+            "Billboard/Baliho",
+            "Pameran",
+            "Merchandise",
+            "Event",
+            "Mural",
+            "Internet Website/Media Sosial/Media Online",
+            "Lainnya"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": true,
+        "options_chunk": 8,
+        "show_if": [
+            {
+                "no": "0229",
+                "value": "1"
+            }
+        ]
+    },
+    "0231": {
+        "no": "31",
+        "pertanyaan": "Keluarga pernah memperoleh/mendengar/melihat pesan/informasi program kependudukan, Keluarga Berencana dan Pembangunan Keluarga dari petugas?",
+        "tipe": "radio",
+        "options": [
+            "Ya",
+            "Tidak"
+        ],
+        "dependencies": [],
+        "stop_if": [
+            {
+                "jawaban": "2"
+            }
+        ],
+        "unit": "",
+        "lain": false
+    },
+    "0232": {
+        "no": "32",
+        "pertanyaan": "Darimana keluarga menerima informasi tersebut(dipilih boleh lebih dari satu)?",
+        "tipe": "checkbox",
+        "options": [
+            "Pejabat Pemerintah",
+            "Petugas Keluarga Berencana (PKB/PLKB/Petugas Lapangan KB lainnya)",
+            "Guru/Dosen",
+            "Tokoh Agama",
+            "Tokoh Masyarakat",
+            "Dokter",
+            "Bidan/Perawat",
+            "Perangkat Desa/Kelurahan",
+            "Kader/IMP",
+            "Lainnya"
+        ],
+        "dependencies": [],
+        "unit": "",
+        "lain": true,
+        "options_chunk": 5,
+        "show_if": [
+            {
+                "no": "0231",
+                "value": "1"
+            }
+        ]
+    }
+}
