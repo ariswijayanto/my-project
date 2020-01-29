@@ -29,7 +29,8 @@ import useStyles from './styles';
 import kb from '../../../images/kb.png';
 import { useDataSync } from '../../../components/PouchDB/DataSyncProvider';
 
-
+// Firebase
+import * as firebase from 'firebase';
 
 function Home({ history }) {
 
@@ -100,6 +101,96 @@ function Home({ history }) {
             didCancel = true
         }
     }, [metadata, dataBkkbn.local])
+
+
+    async function init() {
+
+        const registration = await navigator.serviceWorker.register('../../../swPushNotification.js');
+
+        if (registration) {
+            console.log('service worker registered!')
+        }
+
+        await navigator.serviceWorker.ready;
+        firebase.initializeApp({
+            messagingSenderId: "657590055033"
+        });
+
+        const messaging = firebase.messaging();
+        messaging.usePublicVapidKey('BE3pmdIXfaGdoZAZS71YgeYC4ybYmSTYsWdXkIEexNlNAAN72RGFjeTFb9pDDk2Nl6uvwD4ok7Zd2PeoeYc1GNo');
+        messaging.useServiceWorker(registration);
+
+        try {
+            const sub = await messaging.requestPermission();
+        } catch (e) {
+            console.log('Unable to get permission', e);
+            return;
+        }
+
+        navigator.serviceWorker.addEventListener('message', event => {
+            if (event.data === 'newData') {
+                showData();
+            }
+        });
+
+        // Retrieve the current registration token
+        const currentToken = await messaging.getToken() + "#" + 2;
+        fetch('http://192.168.180.67:8989/register', { method: 'post', body: currentToken });
+        // fetch('http://192.168.180.67:8989/register?userId=1&token='+currentToken+ { method: 'post'});
+        //showData();
+
+        messaging.onTokenRefresh(async () => {
+            console.log('token refreshed');
+            const newToken = await messaging.getToken();
+            fetch('http://192.168.180.67:8989/register', { method: 'post', body: newToken });
+            // fetch('http://192.168.180.67:8989/register?userId=1&token='+newToken+ { method: 'post'});
+        });
+
+        console.log('My Registration Token: ' + currentToken);
+
+    }
+
+    async function showData() {
+        const db = await getDb();
+        const tx = db.transaction('jokes', 'readonly');
+        const store = tx.objectStore('jokes');
+        // eslint-disable-next-line no-undef
+        store.getAll().onsuccess = e => showJokes(e.target.result);
+    }
+
+    // function showJokes(jokes) {
+    //   const table = document.getElementById('outTable');
+
+    //   jokes.sort((a, b) => parseInt(b.ts) - parseInt(a.ts));
+    //   const html = [];
+    //   jokes.forEach(j => {
+    //     const date = new Date(parseInt(j.ts));
+    //     html.push('<div><div class="header">${date.toISOString()} ${j.id} (${j.seq})</div><div class="joke">${j.joke}</div></div>');
+    //   });
+
+    //   table.innerHTML = html.join('');
+    // }
+
+    async function getDb() {
+        if (this.db) {
+            return Promise.resolve(this.db);
+        }
+        return new Promise(resolve => {
+            const openRequest = indexedDB.open("Chuck", 1);
+
+            openRequest.onupgradeneeded = event => {
+                const db = event.target.result;
+                db.createObjectStore('jokes', { keyPath: 'id' });
+            };
+
+            openRequest.onsuccess = event => {
+                this.db = event.target.result;
+                resolve(this.db);
+            }
+        });
+    }
+
+    init();
 
     return (
         <Container maxWidth="md" className={classes.container}>

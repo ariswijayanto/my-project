@@ -9,6 +9,7 @@
     "@material-ui/lab": "^4.0.0-alpha.31",
     "@material-ui/pickers": "^3.2.8",
     "date-fns": "^2.7.0",
+    "firebase": "^7.7.0",
     "localforage": "^1.7.3",
     "notistack": "^0.9.5",
     "nuka-carousel": "^4.5.12",
